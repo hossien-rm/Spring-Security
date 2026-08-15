@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<HTML lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Shayan company home page</title>
+</head>
+<body>
+<h3>Shayan company home page</h3>
+<hr>
+Welcome to Shayan company home page!
+
+<hr>
+<p>
+    User : <span sec:authentication="principal.username"></span>   <!-- show username of person which save in db -->
+</p>
+<p>
+    Role(s) : <span sec:authentication="principal.authorities"></span> <!-- show role of person which save in db -->
+</p>
+<div sec:authorize="hasRole('MANAGER')">    <!-- show leader botton only for manger -->
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting </a>
+        (Only for manager peeps)
+
+    </p>
+</div>
+<div sec:authorize="hasRole('ADMIN')">     <!-- show IT System botton only for admin -->
+    <p>
+        <a th:href="@{/system}">IT System Meeting </a>
+        (Only for admins peeps)
+
+    </p>
+</div>
+<hr>
+<br><br>
+
+<!--add logout botton-->
+<form action="#" th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+
+</body>
+</HTML>
