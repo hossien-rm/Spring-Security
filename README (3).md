@@ -35,6 +35,7 @@ A Spring Boot project demonstrating **Spring Security with JDBC authentication a
 ## Configuration
 
 ```properties
+#use environment variable
 spring.datasource.url=${DB_URL}
 spring.datasource.username=${DB_USERNAME}
 spring.datasource.password=${DB_PASSWORD}
